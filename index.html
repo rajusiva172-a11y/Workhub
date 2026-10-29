@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find textile, mill and manufacturing jobs with WorkHub.">
+    <title>WorkHub - Find Your Dream Job</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .hero {
+            background: #0b3d91;
+        }
+
+        .hero h1 {
+            color: #ffffff !important;
+        }
+
+        .hero h1 span {
+            color: #ff9800 !important;
+        }
+
+        .hero p {
+            color: #ffffff !important;
+        }
+
+        .category-card {
+            background: #ffffff;
+            border: 1px solid #e0e5ee;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        }
+
+        .category-card h3 {
+            color: #0b3d91;
+            margin-bottom: 10px;
+        }
+
+        .category-card p {
+            color: #555555;
+            margin-bottom: 18px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .search-box input,
+        .search-box select {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .search-box button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 22px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #e68900;
+        }
+
+        @media (max-width: 600px) {
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box input,
+            .search-box select,
+            .search-box button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo">
+            Work<span>Hub</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Find Jobs</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO AND SEARCH -->
+        <section class="hero">
+            <div class="hero-content">
+
+                <h1>
+                    Find Your Dream Job With
+                    <span>WorkHub</span>
+                </h1>
+
+                <p>
+                    Discover opportunities in textile, mills and
+                    manufacturing industries.
+                </p>
+
+                <form class="search-box" id="jobSearchForm">
+
+                    <input
+                        type="text"
+                        id="searchKeyword"
+                        placeholder="Enter job title or company"
+                        aria-label="Job title or company"
+                    >
+
+                    <select id="searchCategory" aria-label="Choose industry">
+                        <option value="">All Industries</option>
+                        <option value="textile">Textile</option>
+                        <option value="mill">Mills</option>
+                        <option value="manufacturing">Manufacturing</option>
+            
+                    </select>
+
+                    <button type="submit">Search Jobs</button>
+
+                </form>
+
+            </div>
+        </section>
+
+        <!-- JOB CATEGORIES -->
+        <section id="categories">
+            <div class="container">
+
+                <h2 class="section-title">Job Categories</h2>
+
+                <div class="job-container">
+
+                    <article class="category-card">
+                        <h3>Textile Industry</h3>
+                        <p>
+                            Explore textile production, machine operation
+                            and garment-related opportunities.
+                        </p>
+                        <a href="jobs.html?category=textile" class="btn">
+                            Explore Textile Jobs
+                        </a>
+                    </article>
+
+                    <article class="category-card">
+                        <h3>Mill Industry</h3>
+                        <p>
+                            Discover mill operations, quality checking
+                            and maintenance-related opportunities.
+                        </p>
+                        <a href="jobs.html?category=mill" class="btn">
+                            Explore Mill Jobs
+                        </a>
+                    </article>
+
+                    <article class="category-card">
+                        <h3>Manufacturing</h3>
+                        <p>
+                            Find production, technical and manufacturing
+                            job opportunities.
+                        </p>
+                        <a href="jobs.html?category=manufacturing" class="btn">
+                            Explore Manufacturing Jobs
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 WorkHub. All rights reserved.</p>
+        <p>Connecting people with industry opportunities.</p>
+    </footer>
+
+    <!-- SEARCH FUNCTION -->
+    <script>
+        document.getElementById("jobSearchForm").addEventListener(
+            "submit",
+            function(event) {
+                event.preventDefault();
+
+                const keyword = document
+                    .getElementById("searchKeyword")
+                    .value.trim();
+
+                const category = document
+                    .getElementById("searchCategory")
+                    .value;
+
+                const params = new URLSearchParams();
+
+                if (keyword) {
+                    params.set("search", keyword);
+                }
+
+                if (category) {
+                    params.set("category", category);
+                }
+
+                const query = params.toString();
+
+                window.location.href = query
+                    ? "jobs.html?" + query
+                    : "jobs.html";
+            }
+        );
+    </script>
+
+</body>
+</html>
