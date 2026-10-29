@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkHub - Job Details</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #0b3d91;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #ff9800;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+        .job-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #0b3d91;
+            margin-top: 0;
+        }
+
+        .company {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #fff0d9;
+            color: #9a5700;
+            padding: 7px 12px;
+            border-radius: 20px;
+            margin: 8px 5px 12px 0;
+            font-size: 14px;
+        }
+
+        h2 {
+            color: #0b3d91;
+            margin-top: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .apply-btn {
+            background: #ff9800;
+            color: #222;
+        }
+
+        .back-btn {
+            background: #0b3d91;
+            color: white;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            header nav a {
+                margin-left: 8px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 25px auto;
+            }
+
+            .job-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="index.html">Work<span>Hub</span></a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#searchResultsSection">Jobs</a>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="job-card" id="jobDetails">
+        <p>Loading job details...</p>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 WorkHub. All rights reserved.</p>
+</footer>
+
+<script>
+    const jobs = {
+        "textile machine operator": {
+            title: "Textile Machine Operator",
+            company: "ABC Textile Company",
+            location: "Tiruppur",
+            category: "Textile",
+            type: "Full Time",
+            description: "Operate and monitor textile machinery during production.",
+            responsibilities: [
+                "Operate textile machines safely.",
+                "Check fabric quality during production.",
+                "Maintain cleanliness around the machine.",
+                "Report machine problems to the supervisor."
+            ],
+            skills: [
+                "Basic textile machine knowledge",
+                "Attention to detail",
+                "Teamwork",
+                "Safety awareness"
+            ]
+        },
+
+        "quality checker": {
+            title: "Quality Checker",
+            company: "ABC Mills",
+            location: "Coimbatore",
+            category: "Mill",
+            type: "Full Time",
+            description: "Inspect products and materials to help maintain quality standards.",
+            responsibilities: [
+                "Inspect products for defects.",
+                "Check product quality against requirements.",
+                "Record inspection results.",
+                "Inform supervisors about quality issues."
+            ],
+            skills: [
+                "Observation skills",
+                "Attention to detail",
+                "Basic quality checking",
+                "Communication"
+            ]
+        },
+
+        "production worker": {
+            title: "Production Worker",
+            company: "Erode Manufacturing Unit",
+            location: "Erode",
+            category: "Manufacturing",
+            type: "Full Time",
+            description: "Support day-to-day manufacturing and production activities.",
+            responsibilities: [
+                "Assist with production tasks.",
+                "Follow workplace safety rules.",
+                "Maintain an organised work area.",
+                "Support the production team."
+            ],
+            skills: [
+                "Teamwork",
+                "Time management",
+                "Safety awareness",
+                "Willingness to learn"
+            ]
+        },
+
+        "maintenance technician": {
+            title: "Maintenance Technician",
+            company: "Salem Mill Industries",
+            location: "Salem",
+            category: "Mill",
+            type: "Full Time",
+            description: "Assist with equipment maintenance and report mechanical problems.",
+            responsibilities: [
+                "Inspect equipment condition.",
+                "Report equipment faults.",
+                "Assist with routine maintenance.",
+                "Follow equipment safety procedures."
+            ],
+            skills: [
+                "Basic mechanical knowledge",
+                "Problem-solving",
+                "Attention to detail",
+                "Safety awareness"
+            ]
+        },
+
+        "production supervisor": {
+            title: "Production Supervisor",
+            company: "Coimbatore Industries",
+            location: "Coimbatore",
+            category: "Manufacturing",
+            type: "Full Time",
+            description: "Help coordinate production activities and monitor daily progress.",
+            responsibilities: [
+                "Coordinate daily production tasks.",
+                "Monitor work progress.",
+                "Communicate with team members.",
+                "Report production issues."
+            ],
+            skills: [
+                "Communication",
+                "Team coordination",
+                "Problem-solving",
+                "Time management"
+            ]
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedJob = (params.get("job") || "").trim().toLowerCase();
+    const container = document.getElementById("jobDetails");
+
+    // Also support a job title passed through a URL hash.
+    const job = jobs[requestedJob];
+
+    if (job) {
+        const makeList = items =>
+            items.map(item => `<li>${item}</li>`).join("");
+
+        container.innerHTML = `
+            <h1>${job.title}</h1>
+            <p class="company">${job.company}</p>
+
+            <span class="tag">${job.location}</span>
+            <span class="tag">${job.category}</span>
+            <span class="tag">${job.type}</span>
+
+            <h2>Job Description</h2>
+            <p>${job.description}</p>
+
+            <h2>Responsibilities</h2>
+            <ul>${makeList(job.responsibilities)}</ul>
+
+            <h2>Required Skills</h2>
+            <ul>${makeList(job.skills)}</ul>
+
+            <div class="buttons">
+                <a class="btn apply-btn"
+                   href="apply.html?job=${encodeURIComponent(job.title)}">
+                   Apply Now
+                </a>
+
+                <a class="btn back-btn"
+                   href="index.html#searchResultsSection">
+                   Back to Home
+                </a>
+            </div>
+        `;
+    } else {
+        container.innerHTML = `
+            <div class="not-found">
+                <h1>Job Not Found</h1>
+                <p>This job title was not recognised.</p>
+                <p>Please return to the home page and select a job again.</p>
+                <a class="btn back-btn" href="index.html">
+                    Back to Home
+                </a>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

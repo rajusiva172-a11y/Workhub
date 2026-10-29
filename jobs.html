@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs - WorkHub</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .filter-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .filter-container input,
+        .filter-container select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d5dce5;
+            border-radius: 8px;
+            background: white;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .jobs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .job-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e1e7ef;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        }
+
+        .job-card h3 {
+            color: #0b3d91;
+            margin-top: 0;
+        }
+
+        .job-category {
+            display: inline-block;
+            background: #fff0e5;
+            color: #c75b00;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .job-card p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .view-button {
+            display: inline-block;
+            background: #0b3d91;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .view-button:hover {
+            background: #ff9800;
+            color: white;
+        }
+
+        #noJobsMessage {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            color: #555;
+        }
+
+        @media (max-width: 700px) {
+            .filter-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container nav-container">
+            <h1 class="logo">Work<span>Hub</span></h1>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- JOB SEARCH SECTION -->
+    <main class="container job-container">
+
+        <h2>Find Your Next Job</h2>
+        <p>Explore opportunities in textile, mills and manufacturing industries.</p>
+
+        <!-- SEARCH AND FILTERS -->
+        <div class="filter-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search job title or company..."
+            >
+
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="textile">Textile</option>
+                <option value="mill">Mill</option>
+                <option value="manufacturing">Manufacturing</option>
+            </select>
+
+            <select id="locationFilter">
+                <option value="">All Locations</option>
+                <option value="coimbatore">Coimbatore</option>
+                <option value="tiruppur">Tiruppur</option>
+                <option value="erode">Erode</option>
+                <option value="salem">Salem</option>
+            </select>
+
+        </div>
+
+        <p id="resultsCount">Showing all jobs</p>
+
+        <!-- JOB CARDS -->
+        <div class="jobs-list" id="jobsList">
+
+            <div class="job-card"
+                 data-category="textile"
+                 data-location="tiruppur">
+
+                <span class="job-category">Textile</span>
+                <h3>Textile Machine Operator</h3>
+                <p><strong>Company:</strong> ABC Textile Company</p>
+                <p><strong>Location:</strong> Tiruppur</p>
+                <p>Operate textile machines and support daily fabric production.</p>
+
+                <a class="view-button"
+                   href="job-details.html?job=Textile%20Machine%20Operator">
+                    View Details
+                </a>
+            </div>
+
+            <div class="job-card"
+                 data-category="mill"
+                 data-location="coimbatore">
+
+                <span class="job-category">Mill</span>
+                <h3>Quality Checker</h3>
+                <p><strong>Company:</strong> ABC Mills</p>
+                <p><strong>Location:</strong> Coimbatore</p>
+                <p>Inspect products and identify quality issues during production.</p>
+
+                <a class="view-button"
+                   href="job-details.html?job=Quality%20Checker">
+                    View Details
+                </a>
+            </div>
+
+            <div class="job-card"
+                 data-category="manufacturing"
+                 data-location="erode">
+
+                <span class="job-category">Manufacturing</span>
+                <h3>Production Worker</h3>
+                <p><strong>Company:</strong> Erode Manufacturing Unit</p>
+                <p><strong>Location:</strong> Erode</p>
+                <p>Assist the production team with manufacturing activities.</p>
+
+                <a class="view-button"
+                   href="job-details.html?job=Production%20Worker">
+                    View Details
+                </a>
+            </div>
+
+            <div class="job-card"
+                 data-category="mill"
+                 data-location="salem">
+
+                <span class="job-category">Mill</span>
+                <h3>Maintenance Technician</h3>
+                <p><strong>Company:</strong> Salem Mill Industries</p>
+                <p><strong>Location:</strong> Salem</p>
+                <p>Assist with machine maintenance and basic troubleshooting.</p>
+
+                <a class="view-button"
+                   href="job-details.html?job=Maintenance%20Technician">
+                    View Details
+                </a>
+            </div>
+
+            <div class="job-card"
+                 data-category="manufacturing"
+                 data-location="coimbatore">
+
+                <span class="job-category">Manufacturing</span>
+                <h3>Production Supervisor</h3>
+                <p><strong>Company:</strong> Coimbatore Industries</p>
+                <p><strong>Location:</strong> Coimbatore</p>
+                <p>Coordinate production activities and monitor daily work.</p>
+
+                <a class="view-button"
+                   href="job-details.html?job=Production%20Supervisor">
+                    View Details
+                </a>
+            </div>
+
+        </div>
+
+        <div id="noJobsMessage">
+            <h3>No Jobs Found!</h3>
+            <p>Try a different keyword, category or location.</p>
+            <button type="button" class="view-button" id="resetButton">
+                Show All Jobs
+            </button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 WorkHub. All rights reserved.</p>
+    </footer>
+
+    <!-- SEARCH AND FILTER FUNCTION -->
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const locationFilter = document.getElementById("locationFilter");
+        const jobCards = document.querySelectorAll(".job-card");
+        const noJobsMessage = document.getElementById("noJobsMessage");
+        const resultsCount = document.getElementById("resultsCount");
+        const resetButton = document.getElementById("resetButton");
+
+        function filterJobs() {
+            const keyword = searchInput.value.toLowerCase().trim();
+            const category = categoryFilter.value.toLowerCase();
+            const location = locationFilter.value.toLowerCase();
+
+            let count = 0;
+
+            jobCards.forEach(function(card) {
+                const text = card.innerText.toLowerCase();
+                const cardCategory =
+                    card.getAttribute("data-category").toLowerCase();
+                const cardLocation =
+                    card.getAttribute("data-location").toLowerCase();
+
+                const keywordMatch = text.includes(keyword);
+                const categoryMatch =
+                    category === "" || category === cardCategory;
+                const locationMatch =
+                    location === "" || location === cardLocation;
+
+                if (keywordMatch && categoryMatch && locationMatch) {
+                    card.style.display = "";
+                    count++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            noJobsMessage.style.display = count === 0 ? "block" : "none";
+            resultsCount.textContent =
+                "Showing " + count + (count === 1 ? " job" : " jobs");
+        }
+
+        searchInput.addEventListener("input", filterJobs);
+        categoryFilter.addEventListener("change", filterJobs);
+        locationFilter.addEventListener("change", filterJobs);
+
+        resetButton.addEventListener("click", function() {
+            searchInput.value = "";
+            categoryFilter.value = "";
+            locationFilter.value = "";
+            filterJobs();
+        });
+
+        // Read filters passed from the home page
+        const params = new URLSearchParams(window.location.search);
+
+        const urlCategory = params.get("category");
+        const urlLocation = params.get("location");
+
+        if (urlCategory) {
+            categoryFilter.value = urlCategory.toLowerCase();
+        }
+
+        if (urlLocation) {
+            locationFilter.value = urlLocation.toLowerCase();
+        }
+
+        filterJobs();
+    </script>
+
+</body>
+</html>

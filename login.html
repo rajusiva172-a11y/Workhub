@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - WorkHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <h1 class="logo">Work<span>Hub</span></h1>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <main class="container job-container">
+        <div class="form-container">
+            <h2>Welcome Back!</h2>
+            <p>Login to your WorkHub account.</p>
+
+            <form id="loginForm">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                    minlength="6"
+                >
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <p id="loginMessage" style="display:none; margin-top:20px;"></p>
+
+            <p>
+                Don't have an account?
+                <a href="register.html" class="text-link">Register here</a>
+            </p>
+
+            <p>
+                <a href="index.html" class="text-link">← Back to Home</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 WorkHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("loginForm").addEventListener(
+            "submit",
+            function(event) {
+                event.preventDefault();
+
+                const message = document.getElementById("loginMessage");
+
+                message.textContent =
+                    "Demo only: Login system is not connected to a server yet.";
+                message.style.display = "block";
+            }
+        );
+    </script>
+
+</body>
+</html>
