@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>WorkHub - Job Details</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: #f5f7fb;
+    }
+
+    header {
+        background: #0b3d91;
+        color: white;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #ff9800;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+    }
+
+    .details-container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 0 20px;
+    }
+
+    .job-details {
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    .job-details h1 {
+        color: #0b3d91;
+        margin-top: 0;
+    }
+
+    .job-details h2 {
+        color: #333;
+        margin-top: 30px;
+    }
+
+    .job-info {
+        margin: 15px 0;
+        color: #555;
+        font-size: 17px;
+    }
+
+    .description {
+        line-height: 1.7;
+        color: #555;
+    }
+
+    .apply-btn {
+        margin-top: 25px;
+        padding: 14px 30px;
+        background: #ff9800;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .apply-btn:hover {
+        background: #e68900;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        color: #0b3d91;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .not-found {
+        background: white;
+        padding: 40px;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    WORK<span>HUB</span>
+</div>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+</nav>
+```
+
+</header>
+
+<div class="details-container">
+
+```
+<div id="jobDetails" class="job-details">
+
+    <h1 id="jobTitle">Job Title</h1>
+
+    <p class="job-info">
+        🏢 <strong>Company:</strong>
+        <span id="company"></span>
+    </p>
+
+    <p class="job-info">
+        📍 <strong>Location:</strong>
+        <span id="location"></span>
+    </p>
+
+    <p class="job-info">
+        💰 <strong>Salary:</strong>
+        <span id="salary"></span>
+    </p>
+
+    <p class="job-info">
+        🎓 <strong>Qualification:</strong>
+        <span id="qualification"></span>
+    </p>
+
+
+    <h2>Job Description</h2>
+
+    <p id="description" class="description"></p>
+
+
+    <h2>Requirements</h2>
+
+    <p id="requirements" class="description"></p>
+
+
+    <button class="apply-btn"
+        type="button"
+        onclick="applyJob()">
+    Apply Now
+</button>
+
+    <br>
+
+    <a href="jobs.html" class="back-btn">
+        ← Back to Jobs
+    </a>
+
+</div>
+
+
+<div id="notFound"
+     class="not-found"
+     style="display:none;">
+
+    <h2>Job Not Found</h2>
+
+    <p>
+        Sorry, this job is not available.
+    </p>
+
+    <a href="jobs.html" class="back-btn">
+        ← Back to Jobs
+    </a>
+
+</div>
+```
+
+</div>
+
+<script>
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const jobName =
+    params.get("job");
+
+
+const jobs = {
+
+    "Machine Operator": {
+
+        company: "ABC Textile Mill",
+
+        location: "Coimbatore",
+
+        salary: "₹15,000 - ₹22,000",
+
+        qualification: "ITI / 12th",
+
+        description:
+        "Operate and monitor textile machines during production. Ensure the machines are working properly and maintain production quality.",
+
+        requirements:
+        "Basic machine operation knowledge, ability to work in shifts and willingness to work in a textile production environment."
+
+    },
+
+
+    "Quality Checker": {
+
+        company: "XYZ Textiles",
+
+        location: "Tiruppur",
+
+        salary: "₹18,000 - ₹25,000",
+
+        qualification: "12th / Diploma",
+
+        description:
+        "Inspect textile products and identify defects. Make sure the finished products meet the required quality standards.",
+
+        requirements:
+        "Good observation skills, basic knowledge of textile quality and ability to identify product defects."
+
+    },
+
+
+    "Production Worker": {
+
+        company: "Sri Mills Pvt Ltd",
+
+        location: "Erode",
+
+        salary: "₹14,000 - ₹20,000",
+
+        qualification: "10th / 12th",
+
+        description:
+        "Assist in daily production activities and operate basic machinery under supervision.",
+
+        requirements:
+        "Basic education, physical fitness and willingness to work in shifts."
+
+    },
+
+
+    "Maintenance Technician": {
+
+        company: "ABC Manufacturing",
+
+        location: "Salem",
+
+        salary: "₹20,000 - ₹30,000",
+
+        qualification: "Diploma / ITI",
+
+        description:
+        "Maintain and repair manufacturing machines and equipment. Identify technical problems and perform regular maintenance.",
+
+        requirements:
+        "Diploma or ITI qualification with basic electrical or mechanical maintenance knowledge."
+
+    },
+
+
+    "Production Supervisor": {
+
+        company: "South India Manufacturing",
+
+        location: "Coimbatore",
+
+        salary: "₹25,000 - ₹35,000",
+
+        qualification: "Diploma / Degree",
+
+        description:
+        "Supervise production workers, monitor daily production activities and ensure production targets are achieved.",
+
+        requirements:
+        "Good communication skills, team management ability and knowledge of manufacturing processes."
+
+    }
+
+};
+
+
+const job =
+    jobs[jobName];
+
+
+if (job) {
+
+    document.getElementById("jobTitle").textContent =
+        jobName;
+
+    document.getElementById("company").textContent =
+        job.company;
+
+    document.getElementById("location").textContent =
+        job.location;
+
+    document.getElementById("salary").textContent =
+        job.salary;
+
+    document.getElementById("qualification").textContent =
+        job.qualification;
+
+    document.getElementById("description").textContent =
+        job.description;
+
+    document.getElementById("requirements").textContent =
+        job.requirements;
+
+} else {
+
+    document.getElementById("jobDetails").style.display =
+        "none";
+
+    document.getElementById("notFound").style.display =
+        "block";
+
+}
+
+
+function applyJob() {
+    window.location.href =
+        "apply.html?job=" + encodeURIComponent(jobName);
+}
+
+
+</script>
+
+</body>
+
+</html>

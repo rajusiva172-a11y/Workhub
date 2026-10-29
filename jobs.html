@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>WorkHub - Jobs</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f7fb;
+        }
+
+        header {
+            background: #0b3d91;
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff9800;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .job-container {
+            padding: 50px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .job-container h1 {
+            color: #0b3d91;
+        }
+
+        .job-card {
+            background: white;
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .job-card h2 {
+            color: #0b3d91;
+        }
+
+        .job-card p {
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .job-card button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .no-jobs {
+            margin-top: 30px;
+            padding: 30px;
+            background: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        WORK<span>HUB</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="job-container">
+
+    <h1 id="pageTitle">
+        Available Jobs
+    </h1>
+
+
+    <!-- TEXTILE JOB -->
+
+    <div class="job-card"
+         data-category="textile"
+         data-location="coimbatore">
+
+        <h2>Machine Operator</h2>
+
+        <p>🏢 ABC Textile Mill</p>
+
+        <p>📍 Coimbatore</p>
+
+        <p>💰 ₹15,000 - ₹22,000</p>
+
+        <p>🎓 ITI / 12th</p>
+
+        <button type="button" onclick="window.location.href='job-details.html?job=Machine%20Operator'">
+    View Details
+</button>
+    </div>
+
+
+    <!-- TEXTILE JOB -->
+
+    <div class="job-card"
+         data-category="textile"
+         data-location="tiruppur">
+
+        <h2>Quality Checker</h2>
+
+        <p>🏢 XYZ Textiles</p>
+
+        <p>📍 Tiruppur</p>
+
+        <p>💰 ₹18,000 - ₹25,000</p>
+
+        <p>🎓 12th / Diploma</p>
+
+        <button type="button" onclick="window.location.href='job-details.html?job=Quality%20Checker'">
+    View Details
+</button>
+
+    </div>
+
+
+    <!-- MILL JOB -->
+
+    <div class="job-card"
+         data-category="mill"
+         data-location="erode">
+
+        <h2>Production Worker</h2>
+
+        <p>🏢 Sri Mills Pvt Ltd</p>
+
+        <p>📍 Erode</p>
+
+        <p>💰 ₹14,000 - ₹20,000</p>
+
+        <p>🎓 10th / 12th</p>
+
+       <button type="button" onclick="window.location.href='job-details.html?job=Production%20Worker'">
+    View Details
+</button>
+
+    </div>
+
+
+    <!-- MANUFACTURING JOB -->
+
+    <div class="job-card"
+         data-category="manufacturing"
+         data-location="salem">
+
+        <h2>Maintenance Technician</h2>
+
+        <p>🏢 ABC Manufacturing</p>
+
+        <p>📍 Salem</p>
+
+        <p>💰 ₹20,000 - ₹30,000</p>
+
+        <p>🎓 Diploma / ITI</p>
+
+        <button type="button" onclick="window.location.href='job-details.html?job=Maintenance%20Technician'">
+    View Details
+</button>
+
+    </div>
+
+
+    <!-- MANUFACTURING JOB -->
+
+    <div class="job-card"
+         data-category="manufacturing"
+         data-location="coimbatore">
+
+        <h2>Production Supervisor</h2>
+
+        <p>🏢 South India Manufacturing</p>
+
+        <p>📍 Coimbatore</p>
+
+        <p>💰 ₹25,000 - ₹35,000</p>
+
+        <p>🎓 Diploma / Degree</p>
+
+        <button type="button" onclick="window.location.href='job-details.html?job=Production%20Supervisor'">
+    View Details
+</button>
+
+    </div>
+
+
+    <div id="noJobs"
+         class="no-jobs"
+         style="display:none;">
+
+        <h2>No Jobs Found</h2>
+
+        <p>
+            Sorry, no jobs available for this selection.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const category =
+    params.get("category");
+
+const location =
+    params.get("location");
+
+
+const jobs =
+    document.querySelectorAll(".job-card");
+
+let found = false;
+
+
+jobs.forEach(function(job) {
+
+    const jobCategory =
+        job.getAttribute("data-category");
+
+    const jobLocation =
+        job.getAttribute("data-location");
+
+    if (
+        (!category || jobCategory === category) &&
+        (!location || jobLocation === location)
+    ) {
+
+        job.style.display = "block";
+        found = true;
+
+    } else {
+
+        job.style.display = "none";
+
+    }
+
+});
+
+
+function viewJob(jobName) {
+    alert("Opening Job Details...");
+    window.location.href = "job-details.html?job=" + encodeURIComponent(jobName);
+}
+
+</script>
+
+
+</body>
+
+</html>
